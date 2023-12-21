@@ -54,9 +54,11 @@ install_extension() {
         tar -zxf $ext_filename
     elif [ "$mime_type" = "application/x-tar" ]; then
         tar -xf $ext_filename
+    elif [ "$mime_type" = "application/zip" ]; then
+        unzip $ext_filename
     else
         echo "error: unsupported extension archive: $mime_type"
-        echo "supported formats: gzip and tar"
+        echo "supported formats: gzip, tar and zip"
         exit 1
     fi
     if [ ! -d "/tmp/extensions/resources" ]; then
